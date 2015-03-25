@@ -13,5 +13,19 @@ var map = L.mapbox.map('map', 'anandthakker.99416d58')
 var centerline = require('./data/centerline-merged.json');
 var trailLayer = L.mapbox.featureLayer(centerline).addTo(map);
 
-chooseRoute(map, centerline, function(route) { fetchElevation(route, done)})
+chooseRoute(map, centerline, locateShelters)
+
+function locateShelters (route) {
+  var waypoints = require('./lib/waypoints.js')
+  var shelters = require('./data/at_shelters.json')
+  var data = waypoints(route, shelters.features)
+
+  console.log(data)
+
+  L.mapbox.featureLayer(data)
+  .eachLayer(function (marker) {
+    marker.setIcon(L.mapbox.marker.icon({'marker-color': '#0a8'}))
+  })
+  .addTo(map)
+}
 
