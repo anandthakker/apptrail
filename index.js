@@ -1,6 +1,8 @@
 require('mapbox.js'); // attaches to window.L
 
 var chooseRoute = require('./lib/choose-route.js');
+var fetchElevation = require('./lib/fetch-elevation.js');
+
 require('./app.css');
 
 L.mapbox.accessToken = 'pk.eyJ1IjoiYW5hbmR0aGFra2VyIiwiYSI6InJJSEp4RFkifQ.Ea75OuvCgvTqmnYwq6udeg';
@@ -11,8 +13,5 @@ var map = L.mapbox.map('map', 'anandthakker.99416d58')
 var centerline = require('./data/centerline-merged.json');
 var trailLayer = L.mapbox.featureLayer(centerline).addTo(map);
 
-
-chooseRoute(map, centerline, function(route){
-  console.log('route', route)
-})
+chooseRoute(map, centerline, function(route) { fetchElevation(route, done)})
 
