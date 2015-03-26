@@ -13,3 +13,6 @@ node_modules/.bin/beefy index.js --open
 - mapbox.js
 - love
 
+# License
+
+MIT
