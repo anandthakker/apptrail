@@ -23,6 +23,7 @@ function routeChanged (route) {
     if(err) console.error(err)
     var chart = profile(route, elevation)
     var el = document.getElementById('profile')
+    el.innerHTML = ''
     el.appendChild(createElement(chart))
   })
 }
