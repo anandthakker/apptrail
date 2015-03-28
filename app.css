@@ -13,11 +13,17 @@ body {
   background-color: #eee8d5;
 }
 
-svg {
-  width: 100%;
+#profile svg {
+  margin: 0 auto;
+  display: block;
+  width: 75%;
   height: 300px;
 }
 
-svg .trail {
+#profile svg .trail {
   stroke: #b58900;
+}
+
+#profile svg text {
+  font-size: 12px;
 }
