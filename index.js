@@ -24,7 +24,13 @@ function routeChanged (route) {
   var shlt = waypoints(route, shelters.features)
   
   fetchElevation(route, function(err, elevation) {
-    if(err) console.error(err)
+    if(err) {
+      console.error('Error fetching elevation data from surface API', err)
+      var start = Math.random()*1000
+      elevation = route.geometry.coordinates.map(function (p) {
+        return { ele: (start += Math.random() * 100 - 20), latlng: { lat: p[1], lng: p[0] }}
+      })
+    }
     var chart = profile(route, elevation, shlt)
     var el = document.getElementById('profile')
     el.innerHTML = ''
