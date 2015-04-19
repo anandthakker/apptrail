@@ -22,8 +22,13 @@ body {
 
 #profile svg .trail {
   stroke: #b58900;
+  fill: none;
 }
 
 #profile svg text {
   font-size: 12px;
+}
+
+#profile .mile-marker {
+  stroke: #D5CFBC;
 }
